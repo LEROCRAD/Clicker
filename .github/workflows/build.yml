@@ -2,7 +2,7 @@ name: Build Android APK
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   workflow_dispatch:
 
 jobs:
@@ -11,16 +11,16 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Build with Buildozer
-        uses: ArtemisDevs/buildozer-action@v1
+        uses: DonateNDie/buildozer-action@v1.4
         with:
           command: buildozer android debug
           submodule_update: false
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: app-release
           path: bin/*.apk
