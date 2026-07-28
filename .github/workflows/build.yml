@@ -25,15 +25,8 @@ jobs:
           pip install --upgrade pip
           pip install buildozer cython
 
-      - name: Accept Android SDK Licenses & Build
+      - name: Build APK with Buildozer
         run: |
-          # Создаем дефолтные соглашения для SDK
-          mkdir -p ~/.android
-          touch ~/.android/repositories.cfg
-          # Принудительно жмем 'y' на все лицензии SDK
-          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
-          yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses || true
-          # Запускаем сборку
           buildozer android debug
 
       - name: Upload APK
