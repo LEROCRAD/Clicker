@@ -15,12 +15,14 @@ fullscreen = 1
 
 android.archs = arm64-v8a
 
-# Жестко фиксируем проверенные версии SDK и Build-Tools, чтобы не лезла 37 версия
+# Фиксируем API и версии инструментов
 android.api = 33
 android.minapi = 21
+android.ndk = 25b
+android.ndk_api = 21
 android.build_tools_version = 33.0.2
 
-# Автопринятие лицензий внутри самого Buildozer
+# Автопринятие лицензий
 android.accept_sdk_license = True
 
 [buildozer]
