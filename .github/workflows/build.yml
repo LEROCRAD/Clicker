@@ -9,6 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    # Жестко сбрасываем системные пути, чтобы билд не ломался о чужие NDK
+    env:
+      ANDROID_NDK_ROOT: ""
+      ANDROID_HOME: ""
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
