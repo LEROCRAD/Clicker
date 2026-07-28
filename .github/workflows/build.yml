@@ -13,11 +13,21 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Build with Buildozer
-        uses: DonateNDie/buildozer-action@v1.4
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          command: buildozer android debug
-          submodule_update: false
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential ccache git libffi-dev libssl-dev python3-dev libsqlite3-dev zlib1g-dev openjdk-17-jdk zip unzip
+          pip install --upgrade pip
+          pip install buildozer cython
+
+      - name: Build APK with Buildozer
+        run: |
+          buildozer android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
